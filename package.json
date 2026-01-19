@@ -18,6 +18,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mogodb": "^0.0.1-security",
+    "mongodb": "^7.0.0"
   }
 }
