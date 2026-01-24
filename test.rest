@@ -1,10 +1,10 @@
 @baseurl = http://localhost:3000
 
 @calendar = http://localhost:3000/calendar
-@calendarId = 
+@calendarId = 696e23d3518f951439fa4adb
 
 @people = http://localhost:3000/people
-@peopleID =
+@peopleID = 696e1b7e518f951439fa4ad6
 
 ### test local deployment
 GET {{baseurl}}
@@ -25,23 +25,23 @@ POST {{people}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "displayName": "Johnny",
-    "role": "Member",
-    "displayColor": "#FF5733"
+    "firstName": "New",
+    "lastName": "People",
+    "displayName": "Newbie",
+    "role": "other",
+    "displayColor": "#fff533"
 }
 
 ### update a people
-PUT {{people}}/696e2af6d5bc98058e2bcaaa HTTP/1.1
+PUT {{people}}/{{peopleID}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "displayName": "Johnny",
-    "role": "friend",
-    "displayColor": "#FF5733"
+    "firstName": "Elliott",
+    "lastName": "Tompkins",
+    "displayName": "Elliott",
+    "role": "child",
+    "displayColor": "#be33ff"
 }
 
 ### delete a people
@@ -52,9 +52,9 @@ POST {{calendar}} HTTP/1.1
 Content-Type: application/json
 
 {   
-    "eventTitle": "New Event",
+    "eventTitle": "New Event1",
     "eventDate": "2026-02-01",
-    "startTime": "18:00",
+    "startTime": "19:00",
     "endTime": "20:00",
     "eventDescription": "Dinner at Grandma's house",
     "eventLocation": "123 Main St, Hometown, USA",
@@ -65,13 +65,13 @@ Content-Type: application/json
 PUT {{calendar}}/{{calendarId}} HTTP/1.1
 Content-Type: application/json
 
-{   "eventTitle": "Updated Event",
+{   "eventTitle": "Updated Event2",
     "eventDate": "2026-02-02",
     "startTime": "19:00",
     "endTime": "21:00",
-    "eventDescription": "Changed to lunch at Grandpa's house",
+    "eventDescription": "Therapy session",
     "eventLocation": "456 Oak St, Hometown, USA",
-    "person": "Tompkins Family  "
+    "person": "Elliott"
 }   
 
 ### delete a calendar event
