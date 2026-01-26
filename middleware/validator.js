@@ -1,4 +1,4 @@
-// validator.js
+// middleware/validator.js
 const { body, validationResult } = require('express-validator')
 
 const calendarValidationRules = () => {

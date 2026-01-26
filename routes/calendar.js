@@ -4,18 +4,19 @@ const express = require('express');
 const router = express.Router();
 
 const calendarController = require('../controllers/calendar');
-const { calendarValidationRules, validate } = require('../validator');
+const { calendarValidationRules, validate } = require('../middleware/validator');
 
-// Apply validation middleware to POST and PUT routes
-router.post('/', calendarValidationRules(), validate, calendarController.createCalendar);
+const { isAuthenticated } = require('../middleware/authenticate');
 
+// public routes do not require authentication
 router.get('/', calendarController.getAllCalendar); 
-
 router.get('/:id', calendarController.getCalendarById);
 
-router.put('/:id', calendarValidationRules(), validate, calendarController.updateCalendar);
 
-router.delete('/:id', calendarController.deleteCalendar);   
+// Apply validation and authentication middleware to POST and PUT routes
+router.post('/', isAuthenticated,  calendarValidationRules(), validate, calendarController.createCalendar);
+router.put('/:id', isAuthenticated, calendarValidationRules(), validate, calendarController.updateCalendar);
+router.delete('/:id', isAuthenticated, calendarController.deleteCalendar);   
 
 
 module.exports = router;
