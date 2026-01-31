@@ -6,7 +6,10 @@ const doc = {
     title: 'My API',
     description: 'Description'
   },
-  host: 'localhost:3000'
+  host: process.env.NODE_ENV === 'production'
+  ? 'cse341-project2-es0o.onrender.com'
+  : `localhost:${process.env.PORT || 3000}`,
+  schemes: process.env.NODE_ENV === 'production' ? ['https'] : ['http']
 };
 
 const outputFile = './swagger.json';
